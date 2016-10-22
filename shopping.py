@@ -1,4 +1,6 @@
 def get_cost_list(shopping_list, prices):
+
+
     """
     Getting shopping list and prices for goods in it,
      returns list of costs for all products that can be purchased.
@@ -33,7 +35,15 @@ def get_cost_list(shopping_list, prices):
             product_name is string
             cost is numeric
     """
-    return
+    goods = shopping_list
+    prices = prices
+    result = []
+    for i in goods:
+        if i[0] in prices:
+            k = i[-1] * prices[i[0]]
+            result.append((i[0], k))
+#        result.append(i[-1])
+    return result
 
 
 def get_total(shopping_list, prices):
@@ -68,10 +78,26 @@ def get_total(shopping_list, prices):
     Returns:
         Total cost as single number
     """
-    return
+    goods = shopping_list
+    prices = prices
+    result = []
+    goods = list(goods.items())
+
+
+    for i in goods:
+        if i[0] in prices:
+            k = i[-1] * prices[i[0]]
+            result.append((i[0], k))
+    d = dict(result)
+    return sum(d.values())
+
 
 
 def sorted_shopping_list(shopping_list, mapping, departments_order):
+    needs = shopping_list
+    mapping = mapping
+    placement = departments_order
+
     """
     Getting shopping list, department-to-products mapping and
      departments order inside shop, returns products from shopping list,
@@ -124,4 +150,13 @@ def sorted_shopping_list(shopping_list, mapping, departments_order):
 if __name__ == '__main__':
     # tests for this module lives in tests/test_shopping.py
     import unittest
-    unittest.main(module='test_shopping')
+#    unittest.main(module='test_shopping')
+
+
+goods = {'Apple': 2.5, 'Pear': 1, 'Pumpkin': 1.5}
+prices = {'Apple': 9.50, 'Pear': 23.80, 'Pumpkin': 4.50}
+print(get_total(goods, prices))
+
+goods = {'Apple': 2.5, 'Pear': 1, 'Pumpkin': 1.5}
+prices = {'Apple': 9.50, 'Coconut': 20}
+print(get_total(goods, prices))

@@ -42,7 +42,6 @@ def get_cost_list(shopping_list, prices):
         if i[0] in prices:
             k = i[-1] * prices[i[0]]
             result.append((i[0], k))
-#        result.append(i[-1])
     return result
 
 
@@ -94,10 +93,6 @@ def get_total(shopping_list, prices):
 
 
 def sorted_shopping_list(shopping_list, mapping, departments_order):
-    needs = shopping_list
-    mapping = mapping
-    placement = departments_order
-
     """
     Getting shopping list, department-to-products mapping and
      departments order inside shop, returns products from shopping list,
@@ -142,7 +137,19 @@ def sorted_shopping_list(shopping_list, mapping, departments_order):
     Returns:
         List of needed products, sorted by department position
     """
-    return
+    needs = shopping_list
+    mapping = mapping
+    placement = departments_order
+    result = []
+    for i in placement:
+        if i in mapping:
+            m = mapping[i]
+            for j in needs:
+                if j in m:
+                    result.append(j)
+
+
+    return result
 
 
 # code below left for your own usage and can be deleted at will
@@ -153,10 +160,20 @@ if __name__ == '__main__':
 #    unittest.main(module='test_shopping')
 
 
-goods = {'Apple': 2.5, 'Pear': 1, 'Pumpkin': 1.5}
-prices = {'Apple': 9.50, 'Pear': 23.80, 'Pumpkin': 4.50}
-print(get_total(goods, prices))
+#goods = {'Apple': 2.5, 'Pear': 1, 'Pumpkin': 1.5}
+#prices = {'Apple': 9.50, 'Pear': 23.80, 'Pumpkin': 4.50}
+#print(get_total(goods, prices))
 
-goods = {'Apple': 2.5, 'Pear': 1, 'Pumpkin': 1.5}
-prices = {'Apple': 9.50, 'Coconut': 20}
-print(get_total(goods, prices))
+#goods = {'Apple': 2.5, 'Pear': 1, 'Pumpkin': 1.5}
+#prices = {'Apple': 9.50, 'Coconut': 20}
+#print(get_total(goods, prices))
+#needs = ['Bread', 'Apple', 'Milk', 'Salami']
+#mapping = {
+#    'Bakery': ['Bread', 'Cake', 'Pie'],
+#    'Produce': ['Apple', 'Pear', 'Plum', 'Pineapple'],
+#    'Deli': ['Salami', 'Gresh pasta'],
+#    'Grocery': ['Rice', 'Flour'],
+#    'Dairy': ['Milk', 'Eggs', 'Butter']
+#    }
+#placement = ['Produce', 'Grocery', 'Deli', 'Bakery', 'Dairy']
+#print(sorted_shopping_list(needs, mapping, placement))

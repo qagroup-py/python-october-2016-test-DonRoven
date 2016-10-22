@@ -1,4 +1,6 @@
 def isort(words):
+    i = words
+
     """
     Performs case-insensitive sorting
     >>> isort(['Avocado', 'apple', 'Lime', 'lemon'])

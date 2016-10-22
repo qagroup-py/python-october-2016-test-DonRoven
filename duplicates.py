@@ -1,4 +1,9 @@
 def remove_duplicates(data):
+    s = list(data)
+    s1 = []
+    for i in s:
+        if i not in s1:
+            s1.append(i)
     """
     Removes duplicate elements from given sequence:
     >>> remove_duplicates('abcdaefbg')
@@ -23,10 +28,21 @@ def remove_duplicates(data):
     Returns:
         List with all duplicates removed
     """
-    return
+    return s1
 
 
 def get_duplicates(data):
+    d = list(data)
+    dict1 = {}
+    for i in d:
+        if i not in dict1:
+            dict1[i] = 1
+        else:
+            dict1[i] +=1
+
+    for i in d:
+        if dict1[i] == 1:
+            del(dict1[i])
     """
     Get all duplicates from given sequence along with duplicate count.
     >>> dups = get_duplicates([1, 2, 2, 3, 4, 3, 5, 6, 6, 2])
@@ -43,9 +59,9 @@ def get_duplicates(data):
     Returns:
         Dictionary with duplicate values as keys, occurence count as values
     """
-    return
+    return dict1
 
-
+#print(get_duplicates([8, 8, 8, 8]))
 # code below left for your own usage and can be deleted at will
 # -------------------------------------------------------------
 if __name__ == '__main__':

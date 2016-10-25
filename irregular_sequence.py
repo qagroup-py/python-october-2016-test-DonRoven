@@ -28,7 +28,15 @@ def sum_irregular(data):
     Returns:
         Sum of all single elements in passed args, as single number
     """
-    return
+    d = data
+    r = d[0]
+    i = 1
+    while i < len(d):
+        if d[i] is tuple():
+            r += sum(d[i])
+        r += d[i]
+        i += 1
+    return r
 
 
 def multiply_irregular(data):

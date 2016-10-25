@@ -18,7 +18,7 @@ def sum_regular(data):
     Returns:
         Sum of all elements in passed args, as single number
     """
-    return
+    return sum(list(data))
 
 
 def multiply_regular(data):
@@ -43,12 +43,23 @@ def multiply_regular(data):
     Returns:
         Multiplication of all elements in passed args, as single number
     """
-    return
+    d = list(data)
+    if d == []:
+        return 1
+    else:
+        r = d[0]
+        i = 1
+        while i < len(d):
+            r *= d[i]
+            i += 1
+    return r
 
 
 # code below left for your own usage and can be deleted at will
 # -------------------------------------------------------------
 if __name__ == '__main__':
     # tests for this module uses docstrings as source
-    import doctest
-    doctest.testmod(verbose=True)
+#    import doctest
+#    doctest.testmod(verbose=True)
+
+    print (multiply_regular(tuple()))
